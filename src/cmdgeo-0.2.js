@@ -41,55 +41,55 @@
     ////////////////
 
     // Returns true if @x is not null
-    function existy(x) {
+    function existy (x) {
         return x !== null;
     }
 
     // Returns true if @x is not false and not null
-    function truthy(x) {
+    function truthy (x) {
         return (x !== false) && existy(x);
     }
 
     // Returns true if client-side storage is supported
-    function storageSupported() {
+    function storageSupported () {
         return typeof Storage !== undefined ? cmdgeo.storage = sessionStorage : false;
     }
 
     // Returns true if settings are loaded correctly
-    function settingsLoaded() {
+    function settingsLoaded () {
         return isDefined(cmdgeo.settings);
     }
 
     // Returns true if we can use the geo API
-    function gpsInitialized() {
+    function gpsInitialized () {
         return geo_position_js.init();
     }
 
     // Returns true if the passed variable is defined
-    var isDefined = complement(_.isUndefined);
+    var isDefined = complement (_.isUndefined);
 
     // Returns true if @key is defined in storage
-    function isDefinedInStorage(key) {
+    function isDefinedInStorage (key) {
         return isDefined(cmdgeo.storage[key]);
     }
 
     // Returns true if the name of @poi is defined in storage
-    function poiInStorage(poi) {
+    function poiInStorage (poi) {
         return isDefinedInStorage(poi.name);
     }
 
     // Returns the poi status (true/false)
-    function poiStatusInactive(poi) {
+    function poiStatusInactive (poi) {
         return cmdgeo.storage.getItem(poi.name) === "false";
     }
 
     // Returns true if @poi has an onEnter string longer than zero
-    function hasEnterTarget(poi) {
+    function hasEnterTarget (poi) {
         return _.isString(poi.onEnter) && poi.onEnter.length > 0;
     }
 
     // Returns true if @poi has an onEnter string longer than zero
-    function hasExitTarget(poi) {
+    function hasExitTarget (poi) {
         return isDefined(poi.onExit) && _.isString(poi.onExit) && poi.onExit.length > 0;
     }
 
